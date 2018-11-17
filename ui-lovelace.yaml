@@ -1,0 +1,10 @@
+title: Domov
+views:
+    # View tab title.
+  - title: Obývací pokoj
+    id: living_room
+    # Makes the first card fill the view
+    cards:
+        # The markdown card will render markdown text.
+      - type: media-control
+        entity: media_player.lg_webos_smart_tv
