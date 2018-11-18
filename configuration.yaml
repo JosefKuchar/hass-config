@@ -13,9 +13,6 @@ homeassistant:
   # Customization file
   customize: !include customize.yaml
 
-# Show links to resources in log and frontend
-introduction:
-
 # Enables the frontend
 frontend:
 
@@ -50,6 +47,12 @@ map:
 # Track the sun
 sun:
 
+http:
+    api_password: !secret api_password
+    ssl_certificate: /etc/letsencrypt/live/home.josefkuchar.com/fullchain.pem
+    ssl_key: /etc/letsencrypt/live/home.josefkuchar.com/privkey.pem
+    base_url: home.josefkuchar.com
+
 # Sensors
 sensor:
   # Weather prediction
@@ -58,6 +61,7 @@ sensor:
 # Text to speech
 tts:
   - platform: google
+    language: 'cs'
 
 # Cloud
 cloud:
