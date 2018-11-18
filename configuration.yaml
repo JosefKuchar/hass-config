@@ -47,6 +47,7 @@ map:
 # Track the sun
 sun:
 
+# SSL
 http:
     api_password: !secret api_password
     ssl_certificate: /etc/letsencrypt/live/home.josefkuchar.com/fullchain.pem
@@ -57,14 +58,17 @@ http:
 sensor:
   # Weather prediction
   - platform: yr
+  # SSL Cert
+  - platform: command_line
+    name: SSL cert
+    unit_of_measurement: days
+    scan_interval: 10800
+    command: "ssl-cert-check -b -c /etc/letsencrypt/live/home.josefkuchar.com/cert.pem | awk '{ print $NF }'"
 
 # Text to speech
 tts:
   - platform: google
     language: 'cs'
-
-# Cloud
-cloud:
 
 group: !include groups.yaml
 automation: !include automations.yaml
