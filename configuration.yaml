@@ -94,9 +94,11 @@ notify:
 device_tracker:
   - platform: nmap_tracker
     hosts: 192.168.0.0/24
+    interval_seconds: 60
     # sudo setcap cap_net_raw,cap_net_admin,cap_net_bind_service+eip /usr/bin/nmap
     scan_options: " --privileged -sP "
     exclude:
       - 192.168.0.1
   - platform: edimax_extender
+    interval_seconds: 60
     host: '192.168.0.10'

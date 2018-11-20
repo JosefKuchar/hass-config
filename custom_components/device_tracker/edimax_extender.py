@@ -34,8 +34,11 @@ class EdimaxExtenderScanner(DeviceScanner):
         hdr = {'Authorization' : 'Basic %s' % encoded.decode("utf-8")}
         req = urllib.request.Request(url, headers=hdr)
         response = urllib.request.urlopen(req)
-        macs = re.findall(r'<tr class="table3"><td>(.*?)</td>', str(response.read()))
-        return macs[:-1]
+        responseString = re.sub("<!--.*?-->", "", str(response.read()))
+        macs = re.findall(r'<tr class="table3"><td>(.*?)</td>', str(responseString))
+        if 'None' in macs:
+            macs.remove('None')
+        return macs
 
     def get_device_name(self, device):
         return None
