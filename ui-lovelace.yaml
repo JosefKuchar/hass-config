@@ -8,3 +8,17 @@ views:
         # The markdown card will render markdown text.
       - type: media-control
         entity: media_player.lg_webos_smart_tv
+      - type: glance
+        columns: 3
+        entities:
+          - device_tracker.bedroom_pc
+          - device_tracker.living_room_pc
+          - device_tracker.xiaomi_redmi_note_3
+          - device_tracker.xiaomi_mi_a1
+          - device_tracker.samsung_galaxy_s4
+          - device_tracker.school_notebook
+      - type: sensor
+        name: SSL Certifikát
+        entity: sensor.ssl_cert
+      - type: weather-forecast
+        entity: weather.pocasi
