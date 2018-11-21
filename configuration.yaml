@@ -60,6 +60,10 @@ sensor:
     unit_of_measurement: dní
     scan_interval: 10800
     command: "ssl-cert-check -b -c /etc/letsencrypt/live/home.josefkuchar.com/cert.pem | awk '{ print $NF }'"
+  - platform: steam_online
+    api_key: !secret steam_api
+    accounts:
+      - 76561198079981349 # Me  
 
 # Text to speech
 tts:
@@ -97,6 +101,7 @@ device_tracker:
   - platform: nmap_tracker
     hosts: 192.168.0.0/24
     interval_seconds: 60
+    consider_home: 300
     # sudo setcap cap_net_raw,cap_net_admin,cap_net_bind_service+eip /usr/bin/nmap
     scan_options: " --privileged -sP "
     exclude:

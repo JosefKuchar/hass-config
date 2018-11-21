@@ -9,7 +9,7 @@ views:
       - type: media-control
         entity: media_player.lg_webos_smart_tv
       - type: glance
-        columns: 3
+        columns: 2
         entities:
           - device_tracker.bedroom_pc
           - device_tracker.living_room_pc
@@ -22,3 +22,7 @@ views:
         entity: sensor.ssl_cert
       - type: weather-forecast
         entity: weather.pocasi
+      - type: glance
+        title: Steam
+        entities:
+          - sensor.steam_76561198079981349
