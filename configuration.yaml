@@ -84,7 +84,7 @@ weather:
 
 media_player:
   - platform: webostv
-    host: 192.168.0.15
+    host: 192.168.0.171
     filename: webostv.conf
     turn_on_action:
       service: wake_on_lan.send_magic_packet
@@ -93,7 +93,7 @@ media_player:
 
 notify:
   - platform: webostv
-    host: 192.168.0.15
+    host: 192.168.0.171
     name: tv
     filename: webostv.conf
 
@@ -108,6 +108,6 @@ device_tracker:
       - 192.168.0.1
   - platform: edimax_extender
     interval_seconds: 60
-    host: '192.168.0.10'
+    host: '192.168.0.101'
 
 config:
