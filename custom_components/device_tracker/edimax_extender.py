@@ -32,8 +32,11 @@ class EdimaxExtenderScanner(DeviceScanner):
         encoded = base64.b64encode(('%s:%s' % (self.username, self.password)).encode())
         url = "http://%s/wlstatblRepeater.asp" % self.host
         hdr = {'Authorization' : 'Basic %s' % encoded.decode("utf-8")}
-        req = urllib.request.Request(url, headers=hdr)
-        response = urllib.request.urlopen(req)
+        try:
+            req = urllib.request.Request(url, headers=hdr)
+            response = urllib.request.urlopen(req)
+        except:
+            return None
         responseString = re.sub("<!--.*?-->", "", str(response.read()))
         macs = re.findall(r'<tr class="table3"><td>(.*?)</td>', str(responseString))
         if 'None' in macs:
