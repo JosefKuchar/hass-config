@@ -26,3 +26,6 @@ views:
         title: Steam
         entities:
           - sensor.steam_76561198079981349
+      - type: sensor
+        name: Toner tiskárny
+        entity: sensor.samsung_m2070_series_192168099_toner_black

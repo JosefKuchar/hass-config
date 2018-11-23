@@ -64,6 +64,12 @@ sensor:
     api_key: !secret steam_api
     accounts:
       - 76561198079981349 # Me  
+  - platform: syncthru
+    resource: http://192.168.0.99
+    name: Printer
+    monitored_conditions:
+      - toner_black
+      - tray_1
 
 # Text to speech
 tts:
