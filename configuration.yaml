@@ -69,7 +69,6 @@ sensor:
     name: Printer
     monitored_conditions:
       - toner_black
-      - tray_1
 
 # Text to speech
 tts:
