@@ -1,0 +1,55 @@
+esphomeyaml:
+    name: light
+    platform: ESP8266
+    board: d1_mini
+
+wifi:
+    ssid: !secret wifi_ssid
+    password: !secret wifi_password
+    manual_ip:
+        static_ip: 192.168.0.200
+        gateway: 192.168.0.1
+        subnet: 255.255.255.0
+
+mqtt:
+    broker: '192.168.0.150'
+    username: 'homeassistant'
+    password: !secret mqtt_password
+
+ota:
+    password: !secret ota_password
+
+output:
+  - platform: esp8266_pwm
+    pin: D8
+    frequency: 1000 Hz
+    id: pwm_output
+
+light:
+  - platform: monochromatic
+    name: 'Bedroom light'
+    output: pwm_output
+    id: light
+
+binary_sensor:
+  - platform: gpio
+    pin:
+        number: D7
+        mode: INPUT_PULLUP
+        inverted: true
+    name: 'Light button'
+    on_click:
+        then:
+          - light.turn_off: light
+
+sensor:
+  - platform: rotary_encoder
+    name: 'Light encoder'
+    pin_a:
+        number: D5
+        mode: INPUT_PULLUP
+        inverted: true
+    pin_b:
+        number: D6
+        mode: INPUT_PULLUP
+        inverted: true
