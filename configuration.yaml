@@ -68,6 +68,9 @@ sensor:
     resource: http://192.168.0.99
     name: Printer
 
+mqtt:
+    discovery: true
+    password: !secret mqtt_password
 
 # Text to speech
 tts:

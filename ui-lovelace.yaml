@@ -29,3 +29,6 @@ views:
       - type: sensor
         name: Toner tiskárny
         entity: sensor.samsung_m2070_series_192168099_toner_black
+      - type: light
+        entity: light.bedroom_light
+        name: Noční světlo
