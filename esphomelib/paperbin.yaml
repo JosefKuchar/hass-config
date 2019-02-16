@@ -1,0 +1,32 @@
+substitutions:
+    ip: 192.168.0.201
+
+wifi: !include wifi.yaml
+
+esphomeyaml: !include esphomeyaml.yaml
+
+api:
+    password: !secret general_password
+
+ota:
+    password: !secret general_password
+
+sensor:
+  - platform: ultrasonic
+    id: ultrasonic
+    trigger_pin: D8
+    echo_pin: D7
+    name: 'Paper Bin'
+    update_interval: never
+    filters:
+      - filter_nan:
+  - platform: template
+    id: unused
+    lambda: |-
+        digitalWrite(D6, HIGH);
+        id(ultrasonic).update();
+        digitalWrite(D6, LOW);
+        return NAN;
+  - platform: adc
+    pin: A0
+    name: 'Paper Bin Battery'

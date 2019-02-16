@@ -1,0 +1,5 @@
+    name: light
+    platform: ESP8266
+    board: d1_mini
+    platformio_options:
+        lib_ignore: Time

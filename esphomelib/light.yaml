@@ -1,23 +1,16 @@
-esphomeyaml:
-    name: light
-    platform: ESP8266
-    board: d1_mini
+substitutions:
+    ip: 192.168.0.200
 
-wifi:
-    ssid: !secret wifi_ssid
-    password: !secret wifi_password
-    manual_ip:
-        static_ip: 192.168.0.200
-        gateway: 192.168.0.1
-        subnet: 255.255.255.0
+wifi: !include wifi.yaml
 
-mqtt:
-    broker: '192.168.0.150'
-    username: 'homeassistant'
-    password: !secret mqtt_password
+esphomeyaml: !include esphomeyaml.yaml
+
+api:
+    password: !secret general_password
 
 ota:
-    password: !secret ota_password
+    password: !secret general_password
+
 
 output:
   - platform: esp8266_pwm
@@ -40,7 +33,7 @@ binary_sensor:
     name: 'Light button'
     on_click:
         then:
-          - light.turn_off: light
+          - light.toggle: light
 
 sensor:
   - platform: rotary_encoder
